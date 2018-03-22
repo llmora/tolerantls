@@ -21,13 +21,14 @@ intolerant. It is loosely based on examples provided by the [scapy ssl/tls modul
 Requirements
 ------------
 
-scapy and its tls library do the heavy lifting here, so you need to have
-these installed:
+**IMPORTANT: There are quite [a few incompatibilities][scapy-ssl-tls-version-issue] between different versions of scapy and scapy-ssl_tls, we strongly recommend you
+stick to the specific package versions**
+
+scapy and its tls library do the heavy lifting here, so you need to have these installed:
 
 ```
-  $ pip install scapy scapy-ssl_tls
+  $ pip install 'scapy>=2.2.0,<2.3.3' 'scapy-ssl_tls==1.2.3'
 ```
-
 
 Usage
 -----
@@ -53,3 +54,5 @@ For instance to test the TLS version tolerance of example.com:
   [*] Testing TLS version intolerance against example.com:443
   [+] Server is not intolerant - it downgraded the client request and proposed to use TLS_1_2
 ```
+
+[scapy-ssl-tls-version-issue]: https://github.com/tintinweb/scapy-ssl_tls/issues/69#issuecomment-250086682
