@@ -1,4 +1,4 @@
-tolerantls: A scapy-based tester for TLS version involerance
+tolerantls: A scapy-based tester for TLS version intolerance
 ============================================================
 
 TLS specifies that when a client offers a TLS version that is higher than
