@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import socket
 import scapy
@@ -16,15 +16,13 @@ def main():
 
   target = (args.host, args.port)
 
-  print "[*] Testing TLS version intolerance against %s:%s" % (args.host, args.port)
+  print('[*] Testing TLS version intolerance against {0}:{1}'.format(args.host, args.port))
 
   # create tcp socket
   s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
   s.connect(target)
 
-  p = TLSRecord(version=0x03EE) / TLSHandshakes(handshakes=[TLSHandshake() /
-        TLSClientHello(compression_methods=range(0xff)[::-1],
-        cipher_suites=range(0xff))])
+  p = TLSRecord()/TLSHandshake()/TLSClientHello(version=0x03EE, cipher_suites=range(0xff), compression_methods=range(0xff)[::-1])
 
   s.sendall(str(p))
   resp = s.recv(8192)
@@ -37,7 +35,7 @@ def main():
 
     print("[+] Server is not intolerant - it downgraded the client request and proposed to use %s" % (TLS_VERSIONS.get(v, v)))
   else:
-    print "[-] Server is TLS version intolerant"
+    print("[-] Server is TLS version intolerant")
 
 if __name__ == "__main__":
     main()

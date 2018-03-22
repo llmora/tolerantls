@@ -30,6 +30,8 @@ scapy and its tls library do the heavy lifting here, so you need to have these i
   $ pip install 'scapy>=2.2.0,<2.3.3' 'scapy-ssl_tls==1.2.3'
 ```
 
+scapy and scapy-ssl-tls are currently only available for python2, so you cannot use python3 with tolerantls.
+
 Usage
 -----
 
